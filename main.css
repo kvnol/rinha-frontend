@@ -1,0 +1,183 @@
+:root {
+  --color-background: #fff;
+  --color-button: linear-gradient(180deg, #E4E4E4 0%, #F7F7F7 100%);
+  --color-invalid: #BF0E0E;
+  --color-accent-text: #4E9590;
+  --color-brackets: #F2CAB8;
+  --color-dark-text: #000;
+  --color-gray: #BFBFBF;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-dark-text);
+}
+
+.intro {
+  width: calc(100% - 40px);
+  max-width: 800px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+  text-align: center;
+  gap: 24px;
+  transition: .2s opacity ease;
+}
+
+.intro.-hide {
+  display: none;
+}
+
+.intro h1 {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.intro h2 {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.intro label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 6px 12px;
+  appearance: none;
+  border: 1px solid var(--color-dark-text);
+  border-radius: 5px;
+  background: var(--color-button);
+}
+
+.intro label.-loading {
+  pointer-events: none;
+  opacity: .5;
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.intro label.-loading::after {
+  content: '';
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'%3E%3Cpath fill='%23000' d='M6.804 15a1 1 0 0 0-1.366-.366l-1.732 1a1 1 0 0 0 1 1.732l1.732-1A1 1 0 0 0 6.804 15ZM3.706 8.366l1.732 1a1 1 0 1 0 1-1.732l-1.732-1a1 1 0 0 0-1 1.732ZM6 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h2a1 1 0 0 0 1-1Zm11.196-3a1 1 0 0 0 1.366.366l1.732-1a1 1 0 1 0-1-1.732l-1.732 1A1 1 0 0 0 17.196 9ZM15 6.804a1 1 0 0 0 1.366-.366l1-1.732a1 1 0 1 0-1.732-1l-1 1.732A1 1 0 0 0 15 6.804Zm5.294 8.83-1.732-1a1 1 0 1 0-1 1.732l1.732 1a1 1 0 0 0 1-1.732Zm-3.928 1.928a1.001 1.001 0 1 0-1.732 1l1 1.732a1.001 1.001 0 1 0 1.732-1l-1-1.732ZM21 11h-2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2Zm-9 7a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0v-2a1 1 0 0 0-1-1Zm-3-.804a1 1 0 0 0-1.366.366l-1 1.732a1 1 0 0 0 1.732 1l1-1.732A1 1 0 0 0 9 17.196ZM12 2a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0V3a1 1 0 0 0-1-1Z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+    background-position: center center;
+    animation: loading 1s infinite linear;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-size: 100% 100%;
+}
+
+.intro input {
+  display: none;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.form p {
+  color: var(--color-invalid);
+}
+
+.json {
+  width: calc(100% - 40px);
+  max-width: 638px;
+  margin: 0 auto;
+  padding-top: 24px;
+}
+
+.json h1 {
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+}
+
+.json {
+  font-size: 16px;
+  line-height: 28px;
+}
+
+.json ol {
+  margin: 0;
+  padding: 0 0 0 16px;
+  list-style: none;
+}
+
+.json ol:first-child > li:not(:last-child) {
+  margin-bottom: 28px;
+}
+
+.json details {
+  position: relative;
+}
+
+.json summary::after,
+.json details::after {
+  font-weight: 700;
+  color: var(--color-brackets);
+}
+
+.json details::after {
+  content: ']';
+  display: block;
+}
+
+.json summary::after {
+  content: '[';
+  display: inline-block;
+  margin-left: 4px;
+}
+
+.json details[open]::before {
+  content: '';
+  border-left: 1px solid var(--color-gray);
+  display: block;
+  position: absolute;
+  top: 28px;
+  left: 2px;
+  width: 1px;
+  height: calc(100% - 56px);
+}
+
+.json summary {
+  position: relative;
+  display: inline-block;
+  list-style: none;
+  cursor: pointer;
+}
+
+.json .name {
+  color: var(--color-accent-text);
+}
+
+.json .index {
+  color: var(--color-gray);
+}
